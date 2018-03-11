@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>bitcoin mockup</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
     <!-- Place favicon.ico in the root directory -->
 
@@ -21,10 +21,10 @@
     <!-- endbuild -->
     
     <!-- build:js scripts/vendor/modernizr.js -->
-    <script src="/bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
   </head>
   <body>
+
 
   	<div class="header">
 		<div class="header_inner">
@@ -101,6 +101,12 @@
 
 				<div class="exchange-area-scroll">
 					<table class="table exchange-area-table">
+						<colgroup>
+							<col width="110" />
+							<col width="110" />
+							<col width="80" />
+							<col width="*" />
+						</colgroup>
 						<thead class="blind">
 						<tr>
 						<th>한글명</th>
@@ -109,352 +115,42 @@
 						<th>거래대금</th>
 						</tr>
 						</thead>
-						<tbody>
-						<tr class="active">
+						<tbody v-cloak id="left-data-exchange">
+						<tr v-for="item in items">
 							<td>
 								<i class="fa fa-star fa-star-tb"></i>
-
 								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
+									{{item.title}}<br />
+								<small>{{item.unit}}</small>
 							</span>
 							</td>
-							<td>
-								<span class="txt-blue">10,364,000</span>
+							<td v-if="item.status == 'up'">
+								<span class="txt-red bold">{{item.currentPrice}}</span>
 							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
+							<td v-else-if="item.status == 'down'">
+								<span class="txt-blue bold">{{item.currentPrice}}</span>
 							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
 
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
+							<td v-if="item.status == 'up'">
+								<span class="txt-red bold">{{item.compareRatio}}</span>
 							</td>
-							<td>
-								10,364,000
+							<td v-else-if="item.status == 'down'">
+								<span class="txt-blue bold">{{item.compareRatio}}</span>
 							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr >
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
 
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
 							<td>
-								<span class="txt-blue">10,364,000</span>
-							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								10,364,000
-							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr >
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								<span class="txt-blue">10,364,000</span>
-							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								10,364,000
-							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr >
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								<span class="txt-blue">10,364,000</span>
-							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								10,364,000
-							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr >
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								<span class="txt-blue">10,364,000</span>
-							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								10,364,000
-							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr >
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								<span class="txt-blue">10,364,000</span>
-							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								10,364,000
-							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr >
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								<span class="txt-blue">10,364,000</span>
-							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								10,364,000
-							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr >
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								<span class="txt-blue">10,364,000</span>
-							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								10,364,000
-							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr >
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								<span class="txt-blue">10,364,000</span>
-							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								10,364,000
-							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
+								{{item.price}}<span class="txt-grey">백만</span>
 							</td>
 						</tr>
 						</tbody>
 					</table>
 					<table class="table exchange-area-table blind">
+						<colgroup>
+							<col width="110" />
+							<col width="110" />
+							<col width="80" />
+							<col width="*" />
+						</colgroup>
 						<thead class="blind">
 						<tr>
 							<th>한글명</th>
@@ -463,352 +159,48 @@
 							<th>거래대금</th>
 						</tr>
 						</thead>
-						<tbody>
-						<tr class="active">
+						<tbody v-cloak id="left-data-btc">
+						<tr v-for="item in items">
 							<td>
 								<i class="fa fa-star fa-star-tb"></i>
-
 								<span class="txt-tit">
-								누비츠<br />
-								<small>BTC/KRW</small>
+									{{item.title}}<br />
+								<small>{{item.unit}}</small>
 							</span>
 							</td>
-							<td>
-								<span class="txt-blue">10,364,000</span>
+							<td v-if="item.status == 'up'">
+								<span class="txt-red bold">
+									{{item.currentPrice}}<br />
+									<small class="txt-grey">{{item.krw}} <span class="unit">KRW</span></small>
+								</span>
 							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
+							<td v-else-if="item.status == 'down'">
+								<span class="txt-blue bold">
+									{{item.currentPrice}}<br />
+									<small class="txt-grey">{{item.krw}} <span class="unit">KRW</span></small>
+								</span>
 							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
 
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
+							<td v-if="item.status == 'up'">
+								<span class="txt-red bold">{{item.compareRatio}}</span>
 							</td>
-							<td>
-								10,364,000
+							<td v-else-if="item.status == 'down'">
+								<span class="txt-blue bold">{{item.compareRatio}}</span>
 							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr >
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
 
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
 							<td>
-								<span class="txt-blue">10,364,000</span>
-							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								10,364,000
-							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr >
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								<span class="txt-blue">10,364,000</span>
-							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								10,364,000
-							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr >
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								<span class="txt-blue">10,364,000</span>
-							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								10,364,000
-							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr >
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								<span class="txt-blue">10,364,000</span>
-							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								10,364,000
-							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr >
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								<span class="txt-blue">10,364,000</span>
-							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								10,364,000
-							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr >
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								<span class="txt-blue">10,364,000</span>
-							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								10,364,000
-							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr >
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								<span class="txt-blue">10,364,000</span>
-							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								10,364,000
-							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr >
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								<span class="txt-blue">10,364,000</span>
-							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								10,364,000
-							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
+								{{item.price}}<span class="txt-grey">백만</span>
 							</td>
 						</tr>
 						</tbody>
 					</table>
 					<table class="table exchange-area-table blind">
+						<colgroup>
+							<col width="110" />
+							<col width="110" />
+							<col width="80" />
+							<col width="*" />
+						</colgroup>
 						<thead class="blind">
 						<tr>
 							<th>한글명</th>
@@ -817,352 +209,48 @@
 							<th>거래대금</th>
 						</tr>
 						</thead>
-						<tbody>
-						<tr class="active">
+						<tbody v-cloak id="left-data-eth">
+						<tr v-for="item in items">
 							<td>
 								<i class="fa fa-star fa-star-tb"></i>
-
 								<span class="txt-tit">
-								비트코인캐시<br />
-								<small>BCC/ETH</small>
+									{{item.title}}<br />
+								<small>{{item.unit}}</small>
 							</span>
 							</td>
-							<td>
-								<span class="txt-blue">10,364,000</span>
+							<td v-if="item.status == 'up'">
+								<span class="txt-red bold">
+									{{item.currentPrice}}<br />
+									<small class="txt-grey">{{item.krw}} <span class="unit">KRW</span></small>
+								</span>
 							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
+							<td v-else-if="item.status == 'down'">
+								<span class="txt-blue bold">
+									{{item.currentPrice}}<br />
+									<small class="txt-grey">{{item.krw}} <span class="unit">KRW</span></small>
+								</span>
 							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
 
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
+							<td v-if="item.status == 'up'">
+								<span class="txt-red bold">{{item.compareRatio}}</span>
 							</td>
-							<td>
-								10,364,000
+							<td v-else-if="item.status == 'down'">
+								<span class="txt-blue bold">{{item.compareRatio}}</span>
 							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr >
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
 
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
 							<td>
-								<span class="txt-blue">10,364,000</span>
-							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								10,364,000
-							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr >
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								<span class="txt-blue">10,364,000</span>
-							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								10,364,000
-							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr >
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								<span class="txt-blue">10,364,000</span>
-							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								10,364,000
-							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr >
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								<span class="txt-blue">10,364,000</span>
-							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								10,364,000
-							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr >
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								<span class="txt-blue">10,364,000</span>
-							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								10,364,000
-							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr >
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								<span class="txt-blue">10,364,000</span>
-							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								10,364,000
-							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr >
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								<span class="txt-blue">10,364,000</span>
-							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								10,364,000
-							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr >
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								<span class="txt-blue">10,364,000</span>
-							</td>
-							<td>
-								<span class="txt-red">-0.56%</span>
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<i class="fa fa-star fa-star-tb"></i>
-
-								<span class="txt-tit">
-								비트코인<br />
-								<small>BTC/KRW</small>
-							</span>
-							</td>
-							<td>
-								10,364,000
-							</td>
-							<td>
-								-0.56%
-							</td>
-							<td>
-								333,380<span class="txt-grey">백만</span>
+								{{item.price}}<span class="txt-grey">백만</span>
 							</td>
 						</tr>
 						</tbody>
 					</table>
 					<table class="table exchange-area-table blind">
+						<colgroup>
+							<col width="110" />
+							<col width="110" />
+							<col width="80" />
+							<col width="*" />
+						</colgroup>
 						<thead class="blind">
 						<tr>
 							<th>한글명</th>
@@ -1480,20 +568,397 @@
 				</div>
 				<!-- // 공지 -->
 
+				<!-- chart mockup -->
+				<div style="margin-top: 15px;">
+					<img src="images/tmp_chart_BTC.jpg" alt="" width="100%" />
+				</div>
+
+				<div class="conclusion-history-info clearfix">
+					<div class="conclusion-info-table">
+						<div class="conclusion-info-table-inner">
+							<table class="table conclusion-info-table-wrp">
+								<thead>
+								<tr>
+									<th class="txt-blue">매도주문</th>
+									<th class="txt-blue">매도잔량</th>
+									<th class="txt-black">가격</th>
+									<th class="txt-red">매수잔량</th>
+									<th class="txt-red">매수주문</th>
+								</tr>
+								</thead>
+								<tbody>
+								<tr class="blue">
+									<td></td>
+									<td>1.273</td>
+									<td>9,840,000</td>
+									<td colspan="2" rowspan="9" class="none">
+										<table class="table conclusion-info-table-right">
+											<tr>
+												<th>현재가</th>
+												<td>
+													<strong class="txt-black">98,100,000</strong>
+												</td>
+											</tr>
+											<tr>
+												<th>전일가</th>
+												<td>10,364,000</td>
+											</tr>
+											<tr>
+												<th>전일대비</th>
+												<td>
+													<span class="txt-blue">
+														-559,000 / -5.39%
+													</span>
+												</td>
+											</tr>
+											<tr>
+												<th>고가</th>
+												<td>98,100,000</td>
+											</tr>
+											<tr>
+												<th>저가</th>
+												<td>98,100,000</td>
+											</tr>
+											<tr>
+												<th>거래량</th>
+												<td>98,100,000</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+								<tr class="blue">
+									<td></td>
+									<td>1.273</td>
+									<td>9,840,000</td>
+								</tr>
+								<tr class="blue">
+									<td></td>
+									<td>1.273</td>
+									<td>9,840,000</td>
+								</tr>
+								<tr class="blue">
+									<td></td>
+									<td>1.273</td>
+									<td>9,840,000</td>
+								</tr>
+								<tr class="blue">
+									<td></td>
+									<td>1.273</td>
+									<td>9,840,000</td>
+								</tr>
+								<tr class="blue">
+									<td></td>
+									<td>1.273</td>
+									<td>9,840,000</td>
+								</tr>
+								<tr class="blue">
+									<td></td>
+									<td>1.273</td>
+									<td>9,840,000</td>
+								</tr>
+								<tr class="blue">
+									<td></td>
+									<td>1.273</td>
+									<td>9,840,000</td>
+								</tr>
+								<tr class="blue">
+									<td></td>
+									<td>1.273</td>
+									<td>9,840,000</td>
+								</tr>
+								<tr class="red">
+									<td colspan="2" rowspan="9" class="none">
+										<table class="table conclusion-info-table-sub">
+											<thead>
+											<tr>
+												<th>체결가</th>
+												<th>거래량</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr class="txt-red">
+												<td>9,802,000</td>
+												<td>0.0100</td>
+											</tr>
+											<tr class="txt-blue">
+												<td>9,802,000</td>
+												<td>0.0100</td>
+											</tr>
+											<tr class="txt-red">
+												<td>9,802,000</td>
+												<td>0.0100</td>
+											</tr>
+											<tr class="txt-blue">
+												<td>9,802,000</td>
+												<td>0.0100</td>
+											</tr>
+											<tr class="txt-red">
+												<td>9,802,000</td>
+												<td>0.0100</td>
+											</tr>
+											<tr class="txt-red">
+												<td>9,802,000</td>
+												<td>0.0100</td>
+											</tr>
+											<tr class="txt-blue">
+												<td>9,802,000</td>
+												<td>0.0100</td>
+											</tr>
+											<tr class="txt-red">
+												<td>9,802,000</td>
+												<td>0.0100</td>
+											</tr>
+											<tr class="txt-blue">
+												<td>9,802,000</td>
+												<td>0.0100</td>
+											</tr>
+											<tr class="txt-red">
+												<td>9,802,000</td>
+												<td>0.0100</td>
+											</tr>
+											</tbody>
+
+										</table>
+									</td>
+									<td>9,740,000</td>
+									<td>0.3691</td>
+									<td></td>
+								</tr>
+								<tr class="red">
+									<td>9,740,000</td>
+									<td>0.3691</td>
+									<td></td>
+								</tr>
+								<tr class="red">
+									<td>9,740,000</td>
+									<td>0.3691</td>
+									<td></td>
+								</tr>
+								<tr class="red">
+									<td>9,740,000</td>
+									<td>0.3691</td>
+									<td></td>
+								</tr>
+								<tr class="red">
+									<td>9,740,000</td>
+									<td>0.3691</td>
+									<td></td>
+								</tr>
+								<tr class="red">
+									<td>9,740,000</td>
+									<td>0.3691</td>
+									<td></td>
+								</tr>
+								<tr class="red">
+									<td>9,740,000</td>
+									<td>0.3691</td>
+									<td></td>
+								</tr>
+								<tr class="red">
+									<td>9,740,000</td>
+									<td>0.3691</td>
+									<td></td>
+								</tr>
+								<tr class="red">
+									<td>9,740,000</td>
+									<td>0.3691</td>
+									<td></td>
+								</tr>
+
+								<tr class="none">
+									<td colspan="2">13.41</td>
+									<td>표시잔량합계</td>
+									<td colspan="2">17.16</td>
+								</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="conclusion-action">
+						<div class="conclusion-action-inner">
+							<ul class="conclusion-selling-tab clearfix">
+								<li class="conclusion-selling-tab-list">
+									<a href="#none" class="conclusion-selling-tab-link conclusion-selling-tab-link-active">매수</a>
+								</li>
+								<li class="conclusion-selling-tab-list">
+									<a href="#none" class="conclusion-selling-tab-link">매도</a>
+								</li>
+							</ul>
+
+							<div class="conclusion-selling-tab-info blind">
+								<table class="table conclusion-selling-table">
+									<colgroup>
+										<col width="200" />
+										<col width="*" />
+									</colgroup>
+									<tr>
+										<td>주문유형</td>
+										<td>
+											<select name="" id="" class="form-control">
+												<option value="">지정가 주문</option>
+												<option value="">시장가 주문</option>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td>주문수량</td>
+										<td>
+											<input type="number" class="form-control" />
+										</td>
+									</tr>
+									<tr>
+										<td>주문가격</td>
+										<td>
+											<input type="number" class="form-control" />
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<ul class="conclusion-selling-sub-info">
+												<li class="conclusion-selling-sub clearfix">
+													<strong class="pull-left">주문금액</strong>
+													<span class="pull-right">
+														<strong class="txt-black">0</strong>
+														<span class="unit">KRW</span>
+													</span>
+
+												</li>
+												<li class="conclusion-selling-sub clearfix">
+													<strong class="pull-left">수수료 (약 0.1%)</strong>
+													<span class="pull-right">
+														<strong class="txt-black">0</strong>
+														<span class="unit">BTC</span>
+													</span>
+												</li>
+												<li class="conclusion-selling-sub clearfix">
+													<strong class="pull-left">총 매수량 (약)</strong>
+													<span class="pull-right">
+														<strong class="txt-black">0</strong>
+														<span class="unit">BTC</span>
+													</span>
+												</li>
+											</ul>
+										</td>
+									</tr>
+								</table>
+								<a href="#" class="conclusion-buy-btn">지정가 매수</a>
+							</div>
+							<div class="conclusion-selling-tab-info">
+								<table class="table conclusion-selling-table">
+									<colgroup>
+										<col width="200" />
+										<col width="*" />
+									</colgroup>
+									<tr>
+										<td>주문유형</td>
+										<td>
+											<select name="" id="" class="form-control">
+												<option value="">지정가 주문</option>
+												<option value="">시장가 주문</option>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td>주문수량</td>
+										<td>
+											<input type="number" class="form-control" />
+										</td>
+									</tr>
+									<tr>
+										<td>주문가격</td>
+										<td>
+											<input type="number" class="form-control" />
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<ul class="conclusion-selling-sub-info">
+												<li class="conclusion-selling-sub clearfix">
+													<strong class="pull-left">수수료 (약 0.1%)</strong>
+													<span class="pull-right">
+														<strong class="txt-black">0</strong>
+														<span class="unit">KRW</span>
+													</span>
+												</li>
+												<li class="conclusion-selling-sub clearfix">
+													<strong class="pull-left">총 매도금액 (약)</strong>
+													<span class="pull-right">
+														<strong class="txt-black">0</strong>
+														<span class="unit">KRW</span>
+													</span>
+												</li>
+											</ul>
+										</td>
+									</tr>
+								</table>
+								<a href="#" class="conclusion-buy-btn">지정가 매도</a>
+							</div>
+
+							<div class="conclusion-action-order">
+								<h4>미체결 주문</h4>
+								<table class="table conclusion-action-order-table">
+									<thead>
+									<tr>
+										<th>시간</th>
+										<th>구분</th>
+										<th>가격</th>
+										<th>주문잔량</th>
+										<th>총주문량</th>
+										<th>취소</th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr>
+										<td colspan="6" class="empty">미체결 주문 내역이 없습니다.</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
 
 
+				<div class="conclusion-history">
+					<h4 class="clearfix title">
+						체결 내역
+						<span class="pull-right clearfix">
+							<a href="#none" class="donwload-excel-btn">Excel</a>
+							<a href="#none" class="download-csv-btn">CSV</a>
+						</span>
+					</h4>
+					<table class="table conclusion-history-table">
+						<thead>
+						<tr>
+							<th>시간</th>
+							<th>구분</th>
+							<th>가격</th>
+							<th>주문수량 <small>BTC</small></th>
+							<th>금액 <small>KRW</small></th>
+							<th>수수료</th>
+							<th>총 체결</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td colspan="7" class="empty align-txt-center">체결된 내역이 없습니다.</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
 
 				<!-- 체결&일별&코인정보 -->
 				<div class="exchange-table-bottom">
-					<ol class="exchange-table-bottom-tab clearfix">
+					<ol class="exchange-table-bottom-tab js-exchange-tab clearfix">
 						<li class="exchange-table-bottom-tab-list">
-							<a href="#none" class="exchange-table-bottom-tab-link exchange-table-bottom-tab-link-active">체결</a>
+							<a href="#none" class="exchange-table-bottom-tab-link js-exchange-link exchange-table-bottom-tab-link-active">체결</a>
 						</li>
 						<li class="exchange-table-bottom-tab-list">
-							<a href="#none" class="exchange-table-bottom-tab-link">일별</a>
+							<a href="#none" class="exchange-table-bottom-tab-link js-exchange-link">일별</a>
 						</li>
 						<li class="exchange-table-bottom-tab-list">
-							<a href="#none" class="exchange-table-bottom-tab-link">코인정보</a>
+							<a href="#none" class="exchange-table-bottom-tab-link js-exchange-link">코인정보</a>
 						</li>
 					</ol>
 
@@ -1512,7 +977,7 @@
 					</ul>
 
 					<div class="exchange-table-bottom-scroll">
-						<table class="table exchange-table-bottom-tb table-striped blind">
+						<table class="table exchange-table-bottom-tb table-striped">
 							<tr>
 								<td class="align-txt-left">
 									<span>03.10 <small>14:07</small></span>
@@ -1752,7 +1217,7 @@
 								</td>
 							</tr>
 						</table>
-						<table class="table exchange-table-bottom-tb table-striped">
+						<table class="table exchange-table-bottom-tb table-striped blind">
 							<tr>
 								<td class="align-txt-left">
 									<span>03.10</span>
@@ -2034,6 +1499,11 @@
 								</td>
 							</tr>
 
+						</table>
+						<table class="table exchange-table-bottom-tb blind">
+							<tr>
+								<td class="align-txt-center">-</td>
+							</tr>
 						</table>
 					</div>
 
@@ -2049,7 +1519,7 @@
 		<div class="footer-nav">
 			<ul class="footer-menu clearfix">
 				<li class="footer-menu-list">
-					<a href="./notice.html" class="footer-menu-link">공지사항</a>
+					<a href="notice.html" class="footer-menu-link">공지사항</a>
 				</li>
 				<li class="footer-menu-list">
 					<a href="#" class="footer-menu-link">이용약관</a>
@@ -2073,28 +1543,19 @@
 		</div>
 	</div>
 
+
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/modernizr/modernizr.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-    
-    <!-- build:js scripts/plugins.js -->
-    <!--<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>-->
-    <!--<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>-->
-    <!--<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>-->
-    <!--<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>-->
-    <!--<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>-->
-    <!--<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>-->
-    <!--<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>-->
-    <!--<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>-->
-    <!--<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>-->
-    <!--<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>-->
-    <!--<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>-->
-    <!--<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>-->
+
+	<!-- build:js scripts/plugins.js -->
+
     <!-- endbuild -->
-    
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.15/vue.min.js"></script>
     <!-- build:js scripts/main.js -->
     <script src="scripts/main.js"></script>
     <!-- endbuild -->

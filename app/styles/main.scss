@@ -8,7 +8,6 @@ $bg-color: #e9ecf1;
 
 // bower:scss
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
-@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
 // endbower
 h1,h2,h3,h4,h5,h6,ul,ol{
   padding: 0;
@@ -45,10 +44,35 @@ a,a:hover{
 }
 
 .txt-grey{
-  color: grey;
+  color: grey !important;
+}
+
+.txt-green{
+  color: #007a02;
+}
+
+.txt-black{
+  color: #000 !important;
+}
+
+.bold{
+  font-weight: bold !important;
 }
 
 .blind{
+  display: none;
+}
+
+.table{
+  margin-bottom: 0;
+}
+
+.unit{
+  font-size: 11px;
+  color: #656665;
+}
+
+[v-cloak] {
   display: none;
 }
 
@@ -190,6 +214,10 @@ body{
 .notice{
   @include layout_align_center($notice-width);
 
+  .notice-button-area{
+    margin-top: 20px;
+  }
+
   .notice-left-menu{
     float: left;
     width: 200px;
@@ -304,13 +332,13 @@ body{
 
 }
 
-.exchange-area{
-
-
-}
 
 .exchange-area-table{
-
+  td:first-child{
+    text-align: left;
+    position: relative;
+    padding-left: 30px;
+  }
   .txt-tit{
     display: inline-block;
     color: #444;
@@ -319,12 +347,15 @@ body{
 
   .txt-grey{
     margin-left: 2px;
-    font-size: 12px;
+    font-size: 11px;
   }
+
   .fa-star-tb{
-    position: relative;
-    top: -7px !important;
-    left: -7px;
+    position: absolute;
+    top: 50%;
+    margin-top: -5px;
+    left: 10px;
+    color: #d3d3d4;
     font-size: 14px !important;
   }
 
@@ -346,16 +377,17 @@ body{
         background: #f4f5f8;
       }
     }
-
   }
+
   th{
     font-size: 11px;
     text-align: center;
     background: #f9fafc;
     color: #666;
   }
+
   td{
-    font-size: 13px;
+    font-size: 11px;
     cursor: pointer;
     text-align: center;
     vertical-align: middle !important;
@@ -431,13 +463,6 @@ body{
     font-size: 20px;
     color: #0766f0;
   }
-
-  .fa-star{
-    color: #d3d3d4;
-    font-size: 18px;
-    position: relative;
-    top: 3px;
-  }
 }
 
 .exchange-table-header{
@@ -492,7 +517,6 @@ body{
     color: #535150;
     font-size: 20px;
   }
-
 }
 
 .exchange-table-bottom{
@@ -599,3 +623,735 @@ body{
     }
   }
 }
+
+// 입출금관련
+.balance-box{
+
+  .txt-target-first{
+    font-size: 12px;
+  }
+
+  margin-top: 15px;
+  .balance-box-assets{
+    float: left;
+    background: #fff;
+    width: 560px;
+  }
+
+  .balance-box-current{
+    float: left;
+    background: #fbfbfc;
+    margin-left: 15px;
+    width: 410px;
+    height: 850px;
+  }
+
+
+  .balance-assets-title{
+    position: relative;
+    padding: 0 20px;
+    height: 70px;
+    line-height: 70px;
+    color: #000;
+    font-weight: bold;
+  }
+
+  .balance-amount{
+    font-size: 20px;
+  }
+
+  .balance-searchbox{
+    height: 42px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .balance-search-input{
+    float: left;
+    width: 450px;
+    border-right: 1px solid #ddd;
+
+  }
+
+  .input-search{
+    height: 30px;
+    margin: 4px 10px;
+    width: 390px;
+    border: 1px solid #fff;
+  }
+
+  .balance-search-link{
+    float: left;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    font-size: 13px;
+    width: 105px;
+  }
+
+
+  .fa-search{
+    color: #0766f0;
+    font-size: 20px;
+  }
+
+
+  .balance-assets-menu{
+    background: #f9fafc;
+    border-bottom: 1px solid #ebebeb;
+  }
+
+  .balance-assets-menu-list{
+    float: left;
+    color: #666;
+    font-size: 12px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+  }
+
+  .balance-assets-menu-list:nth-child(1){
+    width: 170px;
+  }
+  .balance-assets-menu-list:nth-child(2){
+    width: 150px;
+  }
+  .balance-assets-menu-list:nth-child(3){
+    width: 190px;
+  }
+
+  .balance-assets-list{
+    height: 815px;
+    overflow-y: auto;
+  }
+
+  .balance-assets-list-tb{
+    cursor: pointer;
+    td{
+      border-top: 0;
+      border-bottom: 1px solid #ddd;
+      border-right: 1px solid #ddd;
+      font-size: 13px;
+      padding: 8px 10px 8px 20px;
+      vertical-align: middle;
+    }
+
+    td:nth-child(2){
+      padding-right: 0;
+    }
+
+    td:nth-child(4){
+      border-right: none;
+      padding-left: 10px;
+    }
+
+    // embed in html structure and correct rightly.
+    tr:nth-child(1) > td:nth-child(1) > .ico-left-bg{
+      background: url("https://static.upbit.com/logos/KRW.png") no-repeat 0 center;
+    }
+    tr:nth-child(2) > td:nth-child(1) > .ico-left-bg{
+      background: url("https://static.upbit.com/logos/BTC.png") no-repeat 0 center;
+    }
+    tr:nth-child(3) > td:nth-child(1) > .ico-left-bg{
+      background: url("https://static.upbit.com/logos/ETH.png") no-repeat 0 center;
+    }
+    tr:nth-child(4) > td:nth-child(1) > .ico-left-bg{
+      background: url("https://static.upbit.com/logos/OMG.png") no-repeat 0 center;
+    }
+    tr:nth-child(5) > td:nth-child(1) > .ico-left-bg{
+      background: url("https://static.upbit.com/logos/PAY.png") no-repeat 0 center;
+    }
+    tr:nth-child(6) > td:nth-child(1) > .ico-left-bg{
+      background: url("https://static.upbit.com/logos/ETC.png") no-repeat 0 center;
+    }
+    tr:nth-child(7) > td:nth-child(1) > .ico-left-bg{
+      background: url("https://static.upbit.com/logos/XRP.png") no-repeat 0 center;
+    }
+    tr:nth-child(8) > td:nth-child(1) > .ico-left-bg{
+      background: url("https://static.upbit.com/logos/PIVX.png") no-repeat 0 center;
+    }
+    tr:nth-child(9) > td:nth-child(1) > .ico-left-bg{
+      background: url("https://static.upbit.com/logos/RCN.png") no-repeat 0 center;
+    }
+    tr:nth-child(10) > td:nth-child(1) > .ico-left-bg{
+      background: url("https://static.upbit.com/logos/TIX.png") no-repeat 0 center;
+    }
+    tr:nth-child(11) > td:nth-child(1) > .ico-left-bg{
+      background: url("https://static.upbit.com/logos/BCPT.png") no-repeat 0 center;
+    }
+    tr:nth-child(12) > td:nth-child(1) > .ico-left-bg{
+      background: url("https://static.upbit.com/logos/EDG.png") no-repeat 0 center;
+    }
+    tr:nth-child(13) > td:nth-child(1) > .ico-left-bg{
+      background: url("https://static.upbit.com/logos/VEE.png") no-repeat 0 center;
+    }
+    tr:nth-child(14) > td:nth-child(1) > .ico-left-bg{
+      background: url("https://static.upbit.com/logos/SBD.png") no-repeat 0 center;
+    }
+    tr:nth-child(15) > td:nth-child(1) > .ico-left-bg{
+      background: url("https://static.upbit.com/logos/AMP.png") no-repeat 0 center;
+    }
+    tr:nth-child(16) > td:nth-child(1) > .ico-left-bg{
+      background: url("https://static.upbit.com/logos/STRAT.png") no-repeat 0 center;
+    }
+    tr:nth-child(17) > td:nth-child(1) > .ico-left-bg{
+      background: url("https://static.upbit.com/logos/REP.png") no-repeat 0 center;
+    }
+    tr:nth-child(18) > td:nth-child(1) > .ico-left-bg{
+      background: url("https://static.upbit.com/logos/NEO.png") no-repeat 0 center;
+    }
+    tr:nth-child(19) > td:nth-child(1) > .ico-left-bg{
+      background: url("https://static.upbit.com/logos/SALT.png") no-repeat 0 center;
+    }
+    tr:nth-child(20) > td:nth-child(1) > .ico-left-bg{
+      background: url("https://static.upbit.com/logos/MCO.png") no-repeat 0 center;
+    }
+  }
+
+  .ico-left-bg{
+    display: block;
+    padding-left: 35px;
+    background-size: 22px !important;
+  }
+
+  .bg_gauge{
+    height: 34px;
+    background: #e4f1fe;
+    display: block;
+    position: relative;
+    left: -20px;
+    position: relative;
+  }
+
+  .gauge-sky{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 34px;
+    display: inline-block;
+    background: #b5c5f6;
+    z-index: 90;
+  }
+  
+  .txt-percentage{
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    height: 34px;
+    line-height: 34px;
+    z-index: 99;
+  }
+
+
+  .balance-box-current-title{
+    padding: 0 20px;
+    height: 43px;
+    line-height: 43px;
+    background: #fff;
+  }
+
+  .refresh-btn{
+    font-size: 20px;
+  }
+
+  .balance-box-amount{
+    padding: 0 20px;
+    height: 55px;
+    line-height: 55px;
+    border-top: 1px solid #ddd;
+    background: #fbfbfc;
+    border-bottom: 1px solid #f1f1f4;
+  }
+
+
+  .balance-box-details{
+    padding: 15px 20px;
+    background: #fff;
+  }
+
+  .balance-box-details-list{
+    position: relative;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    font-size: 12px;
+    color: #656665;
+  }
+
+  .balance-box-tab{
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+  }
+
+  .balance-box-tab-list{
+    float: left;
+    width: 33.3%;
+  }
+
+  .balance-box-tab-link{
+    font-size: 14px;
+    text-align: center;
+    display: block;
+    height: 43px;
+    line-height: 43px;
+    font-weight: bold;
+  }
+
+  .balance-box-tab-link-active{
+    color: $main-color;
+    border-bottom: 2px solid $main-color;
+  }
+
+  .balance-deal-box{
+    padding: 30px 20px;
+    background: #fff;
+    .txt{
+      font-size: 13px;
+      color: #696969;
+      margin-bottom: 20px;
+    }
+  }
+
+  .authenticate-btn{
+    display: block;
+    height: 44px;
+    line-height: 44px;
+    background: $main-color !important;
+    color: #fff;
+    text-align: center;
+  }
+
+  .balance-info{
+    border-top: 1px solid #ddd;
+  }
+
+  .balance-info-inner{
+    padding: 20px;
+    font-size: 12px;
+  }
+
+  .fa-exclamation-circle{
+    font-size: 18px;
+    position: relative;
+    top: 2px;
+    margin-right: 2px;
+  }
+
+  .balance-history-box-inner{
+    height: 58px;
+    line-height: 58px;
+    padding-right: 20px;
+    border-bottom: 1px solid #ddd;
+    .selectbox{
+      width: 100px;
+      height: 28px;
+    }
+  }
+
+  .balance-history-box-ft{
+    height: 42px;
+    line-height: 42px;
+    font-size: 12px;
+    padding: 0 10px;
+    border-top: 1px solid #ddd;
+
+  }
+
+  .empty-history{
+    text-align: center;
+    padding-top: 190px;
+    padding-bottom: 309px;
+    color: #999;
+    font-size: 13px;
+
+  }
+
+  .balance-history-box{
+    background: #fff;
+  }
+
+}
+
+
+//투자내역
+.invest-history{
+  background: #fff;
+  margin-top: 15px;
+
+  .invest-history-tab{
+    border-bottom: 1px solid #ddd;
+  }
+
+  .invest-history-tab-list{
+    float: left;
+    width: 25%;
+  }
+
+  .invest-history-tab-link{
+    text-align: center;
+    height: 43px;
+    line-height: 43px;
+    display: block;
+    font-weight: bold;
+  }
+
+  .invest-history-tab-link-active{
+    border-bottom: 2px solid $main-color;
+    color: $main-color;
+  }
+
+  .info{
+    background: #f9fafc;
+    color: #999;
+    height: 38px;
+    line-height: 38px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+
+
+  .invest-history-amount{
+    padding: 20px;
+  }
+
+  .invest-history-info{
+    position: relative;
+    display: block;
+    border-bottom: 1px solid #ddd;
+    height: 37px;
+    line-height: 37px;
+    color: #666;
+  }
+
+  .invest-history-amount-list{
+    float: left;
+    width: 30%;
+  }
+
+  .invest-history-amount-list:nth-child(1){
+    padding-right: 2.5%;
+  }
+  .invest-history-amount-list:nth-child(2){
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+  }
+  .invest-history-amount-list:nth-child(3){
+    padding-left: 2.5%;
+  }
+
+
+  .invest-history-tb-tab{
+    background: #f9fafc;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #e6e6e6;
+  }
+
+  .invest-history-tb-tab-list{
+    float: left;
+    font-size:11px;
+    line-height: 32px;
+    height: 32px;
+    text-align: center;
+    color: #666;
+  }
+
+  .col-width-16{
+    width: 16%;
+  }
+
+  .col-width-125{
+    width: 12.5%;
+  }
+
+  .col-width-1428{
+    width: 14.28%;
+  }
+
+  .invest-history-tb-empty{
+    text-align: center;
+    font-size: 13px;
+    color: #999;
+    padding-top: 20px;
+    padding-bottom: 600px;
+  }
+
+  .invest-history-tb-select{
+    height: 70px;
+    line-height: 70px;
+    padding: 0 10px;
+  }
+
+  .selectbox{
+    width: 138px;
+    height: 38px;
+    margin-top: 15px;
+    margin-right: 5px;
+  }
+}
+
+.conclusion-history{
+  // margin-top: 15px;
+  background: #fff;
+  .title{
+    font-size: 16px;
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+  }
+
+  .donwload-excel-btn{
+    display: inline-block;
+    border: 1px solid #ddd;
+    color: #666;
+    float: right;
+    padding: 0 10px;
+    font-size: 13px;
+    border-left: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 10px;
+  }
+
+  .download-csv-btn{
+    display: inline-block;
+    border: 1px solid #ddd;
+    color: #666;
+    float: right;
+    padding: 0 10px;
+    font-size: 13px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 10px;
+  }
+
+
+
+  .conclusion-history-table{
+    th{
+      border-bottom: 1px solid #ddd !important;
+      font-size: 12px;
+    }
+    .empty{
+      padding: 50px 0;
+      color: #666;
+      font-size: 13px;
+    }
+  }
+}
+
+
+.conclusion-history-info{
+  margin-top: 15px;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
+  padding: 10px;
+
+
+  .conclusion-info-table{
+    float: left;
+    width: 50%;
+    height: 700px;
+  }
+
+  .conclusion-action{
+    float: left;
+    width: 50%;
+    height: 700px;
+  }
+
+  .conclusion-action-inner{
+    //margin-left: 10px;
+    margin-left: 10px;
+  }
+
+  .conclusion-selling-tab{
+    border-bottom: 1px solid #ddd;
+  }
+
+  .conclusion-selling-tab-list{
+    float: left;
+    width: 50%;
+  }
+
+  .conclusion-selling-tab-link{
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+  }
+
+  .conclusion-selling-tab-link-active{
+    border-bottom: 2px solid $main-color;
+    color: $main-color;
+
+  }
+
+
+  .conclusion-selling-sub-info{
+    margin-top: 5px;
+  }
+
+  .conclusion-selling-sub{
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
+  }
+
+  .conclusion-selling-tab-info{
+    padding: 15px 10px 0 10px;
+  }
+
+  .conclusion-buy-btn{
+    background: $main-color !important;
+    color: #fff;
+    font-weight:bold;
+    font-size: 16px;
+    text-align: center;
+    display: block;
+    margin: 10px;
+    height: 36px;
+    line-height: 36px;
+  }
+}
+
+.conclusion-action-order{
+  margin-top: 20px;
+  // padding: 0 10px;
+}
+
+.conclusion-action-order-table{
+  margin-top: 10px;
+  th{
+    border-bottom: 1px solid #ddd !important;
+    font-size: 12px;
+    color: #666;
+  }
+  .empty{
+    padding-top: 110px;
+    padding-bottom: 110px;
+    text-align: center;
+    color: #999;
+    font-size: 12px;
+    border-bottom: 1px solid #ddd;
+  }
+}
+
+.conclusion-info-table-inner{
+  margin-right: 10px;
+}
+
+.conclusion-info-table-wrp{
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+
+  th{
+    font-size: 11px;
+    text-align: center;
+    border-bottom: 1px solid #ddd !important;
+  }
+  td{
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    font-size: 12px;
+    padding: 0 !important;
+    height: 27px;
+    line-height: 29px !important;
+    border-right: 1px solid #ddd;
+  }
+
+  td:last-child{
+    border-right: none;
+  }
+
+  tr.blue {
+    td{
+      background: #e1f1ff;
+      color: #0D46C8;
+      font-weight: bold;
+    }
+    td:hover{
+      background: #b2dfff;
+    }
+  }
+
+  tr.red {
+    td{
+      background: #ffeff4;
+      color: #e60309;
+      font-weight: bold;
+    }
+    td:hover{
+      background: #ffc3d6;
+    }
+  }
+
+
+  .none{
+    background: none !important;
+    color: #999;
+  }
+
+
+  .conclusion-info-table-sub{
+    td{
+      height: 22px !important;
+      font-size: 10px !important;
+      border-right: 0;
+      background: #fff !important;
+    }
+    .txt-blue{
+      td{
+        color: blue;
+      }
+    }
+    .txt-red{
+      td{
+        color: red;
+      }
+    }
+    th{
+      color: #2b2b2b;
+    }
+  }
+
+  .conclusion-info-table-right{
+    td{
+      text-align: right;
+      padding-right: 10px !important;
+    }
+    th{
+      text-align: left;
+      padding-left: 10px !important;
+    }
+    th,td{
+      border-right: none;
+      background: #fff !important;
+      font-size: 11px;
+      color: #666 !important;
+    }
+    tr:first-child{
+      td,th{
+        border-top: none;
+      }
+    }
+    tr:last-child{
+      td,th{
+        border-bottom: none !important;
+      }
+    }
+  }
+}
+
